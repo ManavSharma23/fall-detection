@@ -1,31 +1,60 @@
-Overview
+### 🔹 Real-Time Fall Detection using LSTM & MediaPipe
 
-This project implements a real-time fall detection system using human pose keypoints extracted with MediaPipe Pose and a 2-layer LSTM neural network built in PyTorch.
+A real-time fall detection system built using human pose keypoints extracted with MediaPipe Pose and a 2-layer LSTM neural network implemented in PyTorch.  
+The model learns temporal motion patterns from pose sequences and classifies them into **Normal activity** or **Fall event**.
 
-The model learns temporal movement patterns from pose sequences and classifies them into:
-	•	Normal activity
-	•	Fall event
+Supports both offline training from video datasets and real-time webcam inference.
 
-The system supports both offline training from videos and real-time webcam inference.
+---
 
-⸻
+### ⚙️ Methodology
 
-Methodology
+#### Pose Extraction
+- MediaPipe Pose detects 33 body landmarks
+- Each landmark contains (x, y, z) coordinates
+- Total features per frame = 99
 
-1. Pose Extraction
-	•	MediaPipe Pose detects 33 body landmarks
-	•	Each landmark contains (x, y, z) coordinates
-	•	Total features per frame: 99
+#### Sequence Modeling
+- Frames grouped into sequences of 30 frames
+- Each sequence passed to LSTM network
+- Temporal motion used for fall detection
 
-2. Sequence Modeling
-	•	Frames are grouped into sequences of 30 consecutive frames
-	•	Each sequence is passed into an LSTM model
+#### Model Architecture
+- Input size: 99
+- LSTM layers: 2
+- Hidden size: 128
+- Dropout: 0.3
+- Output classes: 2 (Normal, Fall)
+- Loss: Weighted CrossEntropyLoss (improves fall recall)
+- Optimizer: Adam (lr = 0.001)
 
-3. Model Architecture
-	•	Input size: 99
-	•	LSTM layers: 2
-	•	Hidden size: 128
-	•	Dropout: 0.3
-	•	Output: 2 classes (Normal, Fall)
-	•	Loss: Weighted CrossEntropyLoss (improves fall recall)
-	•	Optimizer: Adam (lr = 0.001)
+---
+
+### 🧠 Features
+
+- Pose-based fall detection (no object detection needed)
+- Sequence learning using LSTM
+- Class imbalance handling with weighted loss
+- Real-time webcam inference
+- Video dataset training support
+- GPU / CPU auto detection
+
+---
+
+### 🛠 Tech Stack
+
+- Python
+- PyTorch
+- MediaPipe
+- OpenCV
+- NumPy
+- scikit-learn
+
+---
+
+### ▶️ Usage
+
+Train model
+
+```bash
+python main.py
