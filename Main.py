@@ -14,9 +14,9 @@ from torch.utils.data import DataLoader, TensorDataset
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report
 
-# -----------------------------
+
 # CONFIG
-# -----------------------------
+
 SEQUENCE_LENGTH = 30
 DATASET_PATH = "dataset"
 MODEL_PATH = "fall_model.pth"
@@ -24,15 +24,14 @@ EPOCHS = 15
 BATCH_SIZE = 32
 LEARNING_RATE = 0.001
 
-# -----------------------------
+
 # DEVICE
-# -----------------------------
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("Using device:", device)
 
-# -----------------------------
+
 # MODEL
-# -----------------------------
 class FallLSTM(nn.Module):
     def __init__(self, input_size=99, hidden_size=128, num_classes=2):
         super().__init__()
@@ -51,18 +50,18 @@ class FallLSTM(nn.Module):
         _, (h, _) = self.lstm(x)
         return self.fc(h[-1])
 
-# -----------------------------
+
 # POSE INITIALIZATION
-# -----------------------------
+
 mp_pose = mp.solutions.pose
 
 # Suppress MediaPipe backend logs
 with open(os.devnull, 'w') as f, contextlib.redirect_stderr(f):
     pose = mp_pose.Pose()
 
-# -----------------------------
+
 # KEYPOINT EXTRACTION
-# -----------------------------
+
 def extract_keypoints(video_path):
     cap = cv2.VideoCapture(video_path)
     frames = []
@@ -91,9 +90,9 @@ def extract_keypoints(video_path):
 
     return np.array(sequences)
 
-# -----------------------------
+
 # TRAIN MODEL
-# -----------------------------
+
 def train_model():
 
     print("Loading dataset...")
@@ -165,9 +164,9 @@ def train_model():
 
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
 
-    # -----------------------------
+
     # TRAINING LOOP
-    # -----------------------------
+
     for epoch in range(EPOCHS):
         model.train()
         total_loss = 0
@@ -187,9 +186,9 @@ def train_model():
 
         print(f"Epoch {epoch+1}/{EPOCHS}, Loss: {total_loss:.4f}")
 
-    # -----------------------------
+
     # EVALUATION
-    # -----------------------------
+
     model.eval()
     with torch.inference_mode():
         outputs = model(X_test)
@@ -210,9 +209,9 @@ def train_model():
     torch.save(model.state_dict(), MODEL_PATH)
     print("Model saved.")
 
-# -----------------------------
+
 # REAL-TIME DEMO
-# -----------------------------
+
 def realtime_demo():
 
     model = FallLSTM().to(device)
@@ -225,6 +224,7 @@ def realtime_demo():
     while True:
         ret, frame = cap.read()
         if not ret:
+            print("Error: Could not read frame from webcam. Please ensure your terminal has Camera permissions in System Settings > Privacy & Security > Camera.")
             break
 
         frame = cv2.flip(frame, 1)
@@ -276,9 +276,9 @@ def realtime_demo():
     cap.release()
     cv2.destroyAllWindows()
 
-# -----------------------------
+
 # MAIN
-# -----------------------------
+
 if __name__ == "__main__":
     print("1 - Train Model")
     print("2 - Run Real-time Demo")
