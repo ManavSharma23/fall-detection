@@ -196,6 +196,7 @@ def train_model():
 
     torch.save(model.state_dict(), MODEL_PATH)
     print("Model saved.")
+
 # REAL-TIME DEMO
 
 def realtime_demo():
