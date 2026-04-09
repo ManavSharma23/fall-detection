@@ -1,9 +1,7 @@
 import os
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
-
 import logging
 logging.getLogger("absl").setLevel(logging.ERROR)
-
 import contextlib
 import cv2
 import torch
@@ -14,17 +12,13 @@ from torch.utils.data import DataLoader, TensorDataset
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report
 
-
 # CONFIG
-
 SEQUENCE_LENGTH = 30
 DATASET_PATH = "dataset"
 MODEL_PATH = "fall_model.pth"
 EPOCHS = 15
 BATCH_SIZE = 32
 LEARNING_RATE = 0.001
-
-
 # DEVICE
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -89,8 +83,6 @@ def extract_keypoints(video_path):
         sequences.append(frames[i:i+SEQUENCE_LENGTH])
 
     return np.array(sequences)
-
-
 # TRAIN MODEL
 
 def train_model():
@@ -163,8 +155,6 @@ def train_model():
     criterion = nn.CrossEntropyLoss(weight=class_weights)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
-
-
     # TRAINING LOOP
 
     for epoch in range(EPOCHS):
@@ -185,8 +175,6 @@ def train_model():
             total_loss += loss.item()
 
         print(f"Epoch {epoch+1}/{EPOCHS}, Loss: {total_loss:.4f}")
-
-
     # EVALUATION
 
     model.eval()
@@ -208,8 +196,6 @@ def train_model():
 
     torch.save(model.state_dict(), MODEL_PATH)
     print("Model saved.")
-
-
 # REAL-TIME DEMO
 
 def realtime_demo():
