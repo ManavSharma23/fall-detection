@@ -105,7 +105,7 @@ def train_model():
                     video_data.append(sequences)
                     video_labels.append(label)
 
-    # Split by video (avoid leakage)
+    # Split by video 
     train_videos, test_videos, train_labels, test_labels = train_test_split(
         video_data, video_labels, test_size=0.2, random_state=42
     )
