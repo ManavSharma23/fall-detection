@@ -12,7 +12,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report
 
-# CONFIG
+# CONFIGURATION
 SEQUENCE_LENGTH = 30
 DATASET_PATH = "dataset"
 MODEL_PATH = "fall_model.pth"
