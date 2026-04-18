@@ -19,6 +19,7 @@ MODEL_PATH = "fall_model.pth"
 EPOCHS = 15
 BATCH_SIZE = 32
 LEARNING_RATE = 0.001
+
 # DEVICE
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
