@@ -1,4 +1,4 @@
-torch
+torch                                  
 torchvision
 mediapipe
 opencv-python
@@ -6,3 +6,5 @@ scikit-learn
 numpy
 matplotlib
 pandas
+
+
