@@ -102,7 +102,7 @@ You will be presented with a prompt:
 ## 🔮 Future Roadmap
 
 ### 🤖 Advanced AI
-- **GCN Integration**: Implement Spatial-Temporal Graph Convolutional Networks for better joint-relationship modeling.
+- **GCN Integration**: Implement Spatial Temporal Graph Convolutional Networks for better joint-relationship modeling.
 - **XAI Support**: Add feature importance maps to visualize which joints triggered the detection.
 
 ### 📱 Deployment & Hardware
