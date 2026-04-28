@@ -1,3 +1,4 @@
+#gitignore
 dataset/
 *.pth
 __pycache__/
