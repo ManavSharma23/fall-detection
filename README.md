@@ -54,7 +54,7 @@ graph TD
 
 ### 1. Prerequisites
 - Python 3.8 or higher
-- A webcam for the real-time demo
+- A webcam for the real-time 
 
 ### 2. Installation
 
