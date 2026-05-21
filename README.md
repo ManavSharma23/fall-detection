@@ -87,7 +87,7 @@ You will be presented with a prompt:
 ## 📐 Methodology Deep-Dive
 
 ### Data Pipeline
-1. **Pose Extraction**: 33 keypoints (x, y, z) = 99 features per frame.
+1. **Pose Extraction**: 33 keypoints (x,y,z) = 99 features per frame.
 2. **Normalization**: Each sequence is normalized by its mean and standard deviation to ensure coordinate-invariant detection.
 3. **Temporal Windowing**: A sliding window of **30 frames** (approx. 1 second at 30fps) is used as input for the LSTM.
 
