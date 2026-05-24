@@ -5,7 +5,7 @@
 [![MediaPipe](https://img.shields.io/badge/MediaPipe-007fba?style=flat&logo=google&logoColor=white)](https://mediapipe.dev/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)](https://opencv.org/)
 
-A sophisticated, real-time fall detection system leveraging **Human Pose Estimation** and **Recursive Neural Networks (LSTM)**. By analyzing temporal motion patterns from skeletal keypoints, the system accurately distinguishes between everyday activities and sudden fall events.
+A sophisticated, real-time fall detection system leveraging **Human Pose Estimation** and **Recursive Neural Networks (LSTM)**. By analyzing temporal motion pattern from skeletal keypoints, the system accurately distinguishes between everyday activities and sudden fall events .
 
 ---
 
