@@ -73,7 +73,7 @@ pip install -r requirements.txt
 
 ### 3. Usage
 
-Run the main application:
+Run the main application :
 ```bash
 python Main.py
 ```
